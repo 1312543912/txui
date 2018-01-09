@@ -22,10 +22,36 @@ var message = function(options){
 message.alert = function (value,callback) {
     instance.title = value.title;
     instance.message = value.message;
-    instance.flagButton = value.showButton;
+    instance.alertShow = true;
+    instance.show = true;
     instance.vm = instance.$mount();
     document.body.appendChild(instance.vm.$el);
     instance.callback = callback;
     return instance.vm;
+}
+//message中confirm事件
+message.confirm = function (value,callback) {
+  instance.title = value.title;
+  instance.message = value.message;
+  instance.messageShow = true;
+  instance.show = true;
+  instance.vm = instance.$mount();
+  document.body.appendChild(instance.vm.$el);
+  instance.callback = callback;
+  return instance.vm;
+}
+//message中prompt事件
+message.prompt = function (value,callback) {
+  instance.title = value.title;
+  instance.placeholder = value.placeholder;
+  instance.type = value.type;
+  instance.value = value.value;
+  instance.oldvalue = value.value;
+  instance.promptShow = true;
+  instance.show = true;
+  instance.vm = instance.$mount();
+  document.body.appendChild(instance.vm.$el);
+  instance.callback = callback;
+  return instance.vm;
 }
 export  default  message;
